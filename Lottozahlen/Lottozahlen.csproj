@@ -83,5 +83,11 @@
   <ItemGroup>
     <None Include="Resources\lottobg.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gui_random_icon_157602.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gui_random_icon_157602 %281%29.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

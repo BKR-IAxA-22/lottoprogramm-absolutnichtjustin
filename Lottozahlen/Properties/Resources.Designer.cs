@@ -63,6 +63,26 @@ namespace Lottozahlen.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap gui_random_icon_157602 {
+            get {
+                object obj = ResourceManager.GetObject("gui_random_icon_157602", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap gui_random_icon_157602__1_ {
+            get {
+                object obj = ResourceManager.GetObject("gui_random_icon_157602 (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap lottobg {
             get {
                 object obj = ResourceManager.GetObject("lottobg", resourceCulture);

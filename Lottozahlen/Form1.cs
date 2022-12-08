@@ -7,36 +7,47 @@ namespace Lottozahlen
 {
     public partial class Form1 : Form
     {
-        public Form1()
-        {
-            InitializeComponent();
-        }
         Random random = new Random();
         int[] numbers = new int[7];
         string[] input = new string[7];
         bool tip;
 
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        //Wenn Der "Generate" Button gedrückt wird
         private void button1_Click(object sender, EventArgs e)
         {
+            //tempöräres int zum zwischenspeichern
             int temp;
             for (int i = 0; i < numbers.Length - 1; i++)
             {
                 temp = random.Next(1, 50);
+                //.Contains schaut ob die Zahl in temp bereits im numbers Array existiert, wenn nicht fügt er diese hinzu
                 if (!numbers.Contains(temp))
                 {
                     numbers[i] = temp;
                 }
+                //Ansonsten geht er im Array einen Schritt zurück und generiert neue Zahlen
+                else i--;
             }
+            //Superzahl wird extra generiert, da kleinerer Zahlenbereich (0 - 9)
             numbers[6] = random.Next(0, 10);
 
+            //Falls min. 1 Textbox keine Eingabe hat (würde das Programm zum crashen bringen)
             if (textBox1.Text == "" || textBox2.Text == "" || textBox3.Text == "" || textBox4.Text == "" || textBox5.Text == "" || textBox6.Text == "" || textBox7.Text == "")
             {
                 MessageBox.Show("Bitte Tipp abgeben.");
                 tip = false;
             }
 
+            //Falls ein Tipp abgegeben wurde
             if (tip)
             {
+                //Versucht die Eingabe in ein int umzuwandeln, speichert dabei die Zahl in temp ints zwischen. Gibt einen boolean zurück
+                //Falls erfolgreich, ändert die Farbe der Textbox in grün, falls nicht wird die Farbe weiß.
                 if (int.TryParse(textBox1.Text, out int temp2) && numbers.Contains(temp2)) textBox1.BackColor = Color.Green;
                 else textBox1.BackColor = Color.White;
                 if (int.TryParse(textBox2.Text, out int temp3) && numbers.Contains(temp3)) textBox2.BackColor = Color.Green;
@@ -52,6 +63,7 @@ namespace Lottozahlen
                 if (int.TryParse(textBox7.Text, out int temp8) && numbers.Contains(temp8)) textBox7.BackColor = Color.Green;
                 else textBox7.BackColor = Color.White;
 
+                //Der Text des Labels wird auf die Zahl im Array gesetzt
                 label1.Text = Convert.ToString(numbers[0]);
                 label2.Text = Convert.ToString(numbers[1]);
                 label3.Text = Convert.ToString(numbers[2]);
@@ -63,6 +75,40 @@ namespace Lottozahlen
             tip = true;
         }
 
+        //Falls der "Random Tip" button gedrückt wird
+        private void button2_Click(object sender, EventArgs e)
+        {
+            //Selbes vorgehen wie beim ersten Button nur mit input als Variable
+            int temp;
+            for (int i = 0; i < input.Length - 1; i++)
+            {
+                temp = random.Next(1, 50);
+                if (!input.Contains(temp.ToString()))
+                {
+                    input[i] = temp.ToString();
+                }
+                else i--;
+            }
+            input[6] = Convert.ToString(random.Next(1, 10));
+
+            //Text in den Textboxen werden auf die Zahlen im Array gesetzt
+            textBox1.Text = input[0];
+            textBox2.Text = input[1];
+            textBox3.Text = input[2];
+            textBox4.Text = input[3];
+            textBox5.Text = input[4];
+            textBox6.Text = input[5];
+            textBox7.Text = input[6];
+            textBox1.BackColor = Color.White;
+            textBox2.BackColor = Color.White;
+            textBox3.BackColor = Color.White;
+            textBox4.BackColor = Color.White;
+            textBox5.BackColor = Color.White;
+            textBox6.BackColor = Color.White;
+            textBox7.BackColor = Color.White;
+        }
+
+        //Falls der input verändert wird, wird der Text in der Textbox geändert
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             input[0] = textBox1.Text;
